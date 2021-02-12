@@ -32,7 +32,7 @@ builds:
     subsampling_scheme: multistate-weighted-lineage
     country: USA
     state_query: "division=='Maine' or division=='New Hampshire' or division=='Vermont' or division=='Massachusetts' or division=='Connecticut' or division=='Rhode Island' or division=='New York' or division=='New Jersey'"
-    lineage_query: "pangolin_lineage=='B.1.110.3' or pangolin_lineage=='B.1.517' or pangolin_lineage=='B.1.1.85' or pangolin_lineage=='B.1.429' or pangolin_lineage=='B.1.1.7' or pangolin_lineage=='B.1.351' or pangolin_lineage=='P.1' or pangolin_lineage=='P.2'"
+    lineage_query: "pangolin_lineage=='B.1.110.3' or pangolin_lineage=='B.1.517' or pangolin_lineage=='B.1.525' or pangolin_lineage=='B.1.1.85' or pangolin_lineage=='B.1.429' or pangolin_lineage=='B.1.1.7' or pangolin_lineage=='B.1.351' or pangolin_lineage=='P.1' or pangolin_lineage=='P.2'"
 
   nyc:
     subsampling_scheme: multistate
