@@ -5,5 +5,5 @@ steps:
 # Put artifacts on GCS
 artifacts:
   objects:
-    location: gs://broad-nextstrain-inputs/${PROJECT_ID}/${REPO_NAME}/${BRANCH_NAME}/$SHORT_SHA
-    paths:  [ 'builds/*', 'colors/*', 'configs/*', 'descriptions/*' ]
+    location: gs://broad-nextstrain-inputs/${REPO_NAME}/${BRANCH_NAME}/$SHORT_SHA
+    paths:  [ '*' ]
