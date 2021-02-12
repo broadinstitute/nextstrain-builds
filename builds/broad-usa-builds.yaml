@@ -1,0 +1,174 @@
+# Define locations for which builds should be created.
+# For each build we specify a subsampling scheme via an explicit key.
+builds:
+
+  massachusetts:
+    subsampling_scheme: state
+    country: USA
+    division: Massachusetts
+
+  massachusetts-weighted:
+    subsampling_scheme: state-weighted
+    country: USA
+    division: Massachusetts
+
+  new-england:
+    subsampling_scheme: multistate
+    country: USA
+    state_query: "division=='Maine' or division=='New Hampshire' or division=='Vermont' or division=='Massachusetts' or division=='Connecticut' or division=='Rhode Island'"
+
+  new-england-weighted:
+    subsampling_scheme: multistate-weighted
+    country: USA
+    state_query: "division=='Maine' or division=='New Hampshire' or division=='Vermont' or division=='Massachusetts' or division=='Connecticut' or division=='Rhode Island'"
+
+  new-england-lineages:
+    subsampling_scheme: multistate-weighted-lineage
+    country: USA
+    state_query: "division=='Maine' or division=='New Hampshire' or division=='Vermont' or division=='Massachusetts' or division=='Connecticut' or division=='Rhode Island'"
+    lineage_query: "pangolin_lineage=='B.1.110.3' or pangolin_lineage=='B.1.517' or pangolin_lineage=='B.1.1.85' or pangolin_lineage=='B.1.429' or pangolin_lineage=='B.1.1.7' or pangolin_lineage=='B.1.351' or pangolin_lineage=='P.1' or pangolin_lineage=='P.2'"
+
+  northeast-lineages:
+    subsampling_scheme: multistate-weighted-lineage
+    country: USA
+    state_query: "division=='Maine' or division=='New Hampshire' or division=='Vermont' or division=='Massachusetts' or division=='Connecticut' or division=='Rhode Island' or division=='New York' or division=='New Jersey'"
+    lineage_query: "pangolin_lineage=='B.1.110.3' or pangolin_lineage=='B.1.517' or pangolin_lineage=='B.1.1.85' or pangolin_lineage=='B.1.429' or pangolin_lineage=='B.1.1.7' or pangolin_lineage=='B.1.351' or pangolin_lineage=='P.1' or pangolin_lineage=='P.2'"
+
+  nyc:
+    subsampling_scheme: multistate
+    country: USA
+    state_query: "division=='New York' or division=='New Jersey' or division=='Connecticut'"
+
+  nyc-weighted:
+    subsampling_scheme: multistate-weighted
+    country: USA
+    state_query: "division=='New York' or division=='New Jersey' or division=='Connecticut'"
+
+  dmv:
+    subsampling_scheme: multistate
+    country: USA
+    state_query: "division=='District of Columbia' or division=='Maryland' or division=='Virginia'"
+
+  dmv-weighted:
+    subsampling_scheme: multistate-weighted
+    country: USA
+    state_query: "division=='District of Columbia' or division=='Maryland' or division=='Virginia'"
+
+
+subsampling:
+
+  state:
+    focal:
+      group_by: "year month"
+      max_sequences: 2400
+      query: --query "country == '{country}' and division == '{division}'"
+
+    # Samples that are genetically related to the focal samples
+    national-context:
+      group_by: "division year month"
+      max_sequences: 1500
+      query: --query "country == '{country}' and division != '{division}'"
+
+    # Contextual samples from the rest of the world
+    global-context:
+      group_by: "region year month"
+      max_sequences: 400
+      exclude: --exclude-where "country='{country}'"    
+
+  multistate:
+    focal:
+      group_by: "year month"
+      max_sequences: 2400
+      query: --query "(country=='{country}' and ({state_query}))"
+
+    # Samples that are genetically related to the focal samples
+    national-context:
+      group_by: "division year month"
+      max_sequences: 1500
+      query: --query "(country=='{country}' and not ({state_query}))"
+
+    # Contextual samples from the rest of the world
+    global-context:
+      group_by: "region year month"
+      max_sequences: 400
+      exclude: --exclude-where "country='{country}'"    
+
+  state-weighted:
+    focal:
+      group_by: "year month"
+      max_sequences: 2400
+      query: --query "country == '{country}' and division == '{division}'"
+
+    # Samples that are genetically related to the focal samples
+    national-context:
+      group_by: "division year month"
+      max_sequences: 1500
+      query: --query "country == '{country}' and division != '{division}'"
+      priorities:
+        type: proximity
+        focus: "focal"
+
+    # Contextual samples from the rest of the world
+    global-context:
+      group_by: "region year month"
+      max_sequences: 400
+      exclude: --exclude-where "country='{country}'"    
+      priorities:
+        type: proximity
+        focus: "focal"
+
+  multistate-weighted:
+    focal:
+      group_by: "year month"
+      max_sequences: 2400
+      query: --query "(country=='{country}' and ({state_query}))"
+
+    # Samples that are genetically related to the focal samples
+    national-context:
+      group_by: "division year month"
+      max_sequences: 1500
+      query: --query "(country=='{country}' and not ({state_query}))"
+      priorities:
+        type: proximity
+        focus: focal
+
+    # Contextual samples from the rest of the world
+    global-context:
+      group_by: "region year month"
+      max_sequences: 400
+      exclude: --exclude-where "country='{country}'"
+      priorities:
+        type: proximity
+        focus: focal
+
+
+  multistate-weighted-lineage:
+    # the focal geographic area (don't exclude the lineage here so as not to bias the proximity calcs)
+    focal:
+      group_by: "year month"
+      max_sequences: 2400
+      query: --query "(country=='{country}' and ({state_query}))"
+
+    # the focal genetic lineage within the focal geographic area
+    focal-lineage:
+      group_by: "country"
+      max_sequences: 1000
+      query: --query  "(country=='{country}' and ({state_query}) and ({lineage_query}))"
+
+    # Samples that are genetically related to the focal samples
+    national-context:
+      group_by: "division year month"
+      max_sequences: 1500
+      query: --query "(country=='{country}' and not ({state_query}))"
+      priorities:
+        type: proximity
+        focus: focal
+
+    # Contextual samples from the rest of the world
+    global-context:
+      group_by: "region year month"
+      max_sequences: 400
+      exclude: --exclude-where "country='{country}'"
+      priorities:
+        type: proximity
+        focus: focal
