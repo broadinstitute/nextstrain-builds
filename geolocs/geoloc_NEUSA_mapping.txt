@@ -1,0 +1,10 @@
+geoloc_neusa	region	country	division
+region	*	*	*
+Northeastern USA	North America	USA	Massachusetts
+Northeastern USA	North America	USA	Maine
+Northeastern USA	North America	USA	New Hampshire
+Northeastern USA	North America	USA	Vermont
+Northeastern USA	North America	USA	Rhode Island
+Northeastern USA	North America	USA	Connecticut
+Northeastern USA	North America	USA	New York
+Northeastern USA	North America	USA	New Jersey
