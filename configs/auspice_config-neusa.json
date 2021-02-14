@@ -108,6 +108,7 @@
   ],
   "filters": [
     "recency",
+    "geoloc_neusa",
     "region",
     "country",
     "division",
