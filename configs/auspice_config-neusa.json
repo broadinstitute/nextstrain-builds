@@ -1,0 +1,121 @@
+{
+  "title": "SARS-CoV-2 Genomic Epidemiology: Northeastern United States",
+  "maintainers": [
+    {"name": "Yale School of Public Health - Grubaugh Lab", "url": "https://grubaughlab.com/"},
+    {"name": "Jackson Laboratory - Tewhey Lab", "url": "http://www.tewheylab.org/"},
+    {"name": "Broad Institute - Viral Genomics", "url": "https://www.broadinstitute.org/viral-genomics"}
+  ],
+  "colorings": [
+    {
+      "key": "location",
+      "title": "County",
+      "type": "categorical"
+    },
+    {
+      "key": "division",
+      "title": "State",
+      "type": "categorical"
+    },
+    {
+      "key": "country",
+      "title": "Country",
+      "type": "categorical"
+    },
+    {
+      "key": "region",
+      "title": "Region",
+      "type": "categorical"
+    },
+    {
+      "key": "host",
+      "title": "Host",
+      "type": "categorical"
+    },
+    {
+      "key": "recency",
+      "title": "Submission Date",
+      "type": "categorical"
+    },
+    {
+      "key": "country_exposure",
+      "title": "Country of exposure",
+      "type": "categorical"
+    },
+    {
+      "key": "division_exposure",
+      "title": "Division of exposure",
+      "type": "categorical"
+    },
+    {
+      "key": "region_exposure",
+      "title": "Region of exposure",
+      "type": "categorical"
+    },
+    {
+      "key": "pangolin_lineage",
+      "title": "Pangolin lineage",
+      "type": "categorical"
+    },
+    {
+      "key": "Nextstrain_clade",
+      "title": "Nextstrain Clade",
+      "type": "categorical"
+    },
+    {
+      "key": "GISAID_clade",
+      "title": "GISAID Clade",
+      "type": "categorical"
+    },
+    {
+      "key": "purpose_of_sequencing",
+      "title": "Purpose of Sequencing",
+      "type": "categorical"
+    },
+    {
+      "key": "geoloc_neusa",
+      "title": "Geoloc: NE USA",
+      "type": "categorical"
+    },
+    {
+      "key": "Northeast_USA_originating_lab",
+      "title": "NE USA Originating Lab",
+      "type": "categorical"
+    },
+     {
+      "key": "Northeast_USA_submitting_lab",
+      "title": "NE USA Submitting Lab",
+      "type": "categorical"
+    }
+  ],
+  "display_defaults": {
+    "color_by": "division",
+    "distance_measure": "num_date",
+    "geo_resolution": "division",
+    "map_triplicate": true,
+    "branch_label": "clade"
+  },
+  "geo_resolutions": [
+    "region",
+    "country",
+    "division",
+    "location"
+  ],
+  "panels": [
+    "tree",
+    "map",
+    "entropy",
+    "frequencies"
+  ],
+  "filters": [
+    "recency",
+    "region",
+    "country",
+    "division",
+    "purpose_of_sequencing",
+    "pangolin_lineage",
+    "Nextstrain_clade",
+    "GISAID_clade",
+    "Northeast_USA_originating_lab",
+    "Northeast_USA_submitting_lab"
+  ]
+}
