@@ -54,6 +54,15 @@ builds:
     country: USA
     state_query: "division=='District of Columbia' or division=='Maryland' or division=='Virginia'"
 
+  colorado-utah-weighted:
+    subsampling_scheme: multistate-weighted
+    country: USA
+    state_query: "division=='Colorado' or division=='Utah'"
+
+  us-mountain-west-weighted:
+    subsampling_scheme: multistate-weighted
+    country: USA
+    state_query: "division=='Colorado' or division=='Utah' or division=='Arizona' or division=='Wyoming' or division=='New Mexico' or division=='Idaho' or division=='Montana' or division=='Nevada'"
 
 subsampling:
 
