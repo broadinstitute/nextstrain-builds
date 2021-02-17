@@ -1,0 +1,117 @@
+# Define locations for which builds should be created.
+# For each build we specify a subsampling scheme via an explicit key.
+builds:
+
+  sierra-leone:
+    subsampling_scheme: country-custom-weighted
+    country: "Sierra Leone"
+    region: Africa
+
+  nigeria:
+    subsampling_scheme: country-custom-weighted
+    country: Nigeria
+    region: Africa
+
+  liberia:
+    subsampling_scheme: country-custom-weighted
+    country: Liberia
+    region: Africa
+
+  senegal:
+    subsampling_scheme: country-custom-weighted
+    country: Senegal
+    region: Africa
+
+  ghana:
+    subsampling_scheme: country-custom-weighted
+    country: Ghana
+    region: Africa
+
+  drcongo:
+    subsampling_scheme: country-custom-weighted
+    country: "Democratic Republic of Congo"
+    region: Africa
+
+  ecowas:
+    subsampling_scheme: multicountry
+    region: Africa
+    country_query: "country=='Benin' or country=='Burkina Faso' or country=='Cape Verde' or country=='Gambia' or country=='Ghana' or country=='Guinea' or country=='Guinea-Bissau' or country=='Liberia' or country=='Mali' or country=='Niger' or country=='Nigeria' or country=='Senegal' or country=='Sierra Leone' or country=='Togo'"
+    # warning: the above list of ecowas countries is missing Côte d'Ivoire because I can't figure out how to add it to the above expression
+
+  ecowas-weighted:
+    subsampling_scheme: multicountry-weighted
+    region: Africa
+    country_query: "country=='Benin' or country=='Burkina Faso' or country=='Cape Verde' or country=='Gambia' or country=='Ghana' or country=='Guinea' or country=='Guinea-Bissau' or country=='Liberia' or country=='Mali' or country=='Niger' or country=='Nigeria' or country=='Senegal' or country=='Sierra Leone' or country=='Togo'"
+    # warning: the above list of ecowas countries is missing Côte d'Ivoire because I can't figure out how to add it to the above expression
+
+
+subsampling:
+
+  country-custom-weighted:
+    # Focal samples for country
+    country:
+      group_by: "division year month"
+      seq_per_group: 200
+      exclude: "--exclude-where 'country!={country}'"
+    # Contextual samples from country's region
+    region:
+      group_by: "country year month"
+      max_sequences: 1500
+      exclude: "--exclude-where 'country={country}' 'region!={region}'"
+      priorities:
+        type: "proximity"
+        focus: "country"
+    # Contextual samples from the rest of the world,
+    # excluding the current region to avoid resampling.
+    global:
+      group_by: "country year month"
+      max_sequences: 3000
+      exclude: "--exclude-where 'region={region}'"
+      priorities:
+        type: "proximity"
+        focus: "country"
+
+
+  multicountry:
+    focal:
+      group_by: "country"
+      max_sequences: 1500
+      query: --query "({country_query})"
+
+    # same continent
+    regional-context:
+      group_by: "country year month"
+      max_sequences: 1500
+      query: --query "(not ({country_query}) and region=='{region}')"
+
+    # rest of world
+    global-context:
+      group_by: "region year month"
+      max_sequences: 1500
+      exclude: --exclude-where "region='{region}'"    
+
+
+  multicountry-weighted:
+    focal:
+      group_by: "country"
+      max_sequences: 1500
+      query: --query "({country_query})"
+
+    # same continent
+    regional-context:
+      group_by: "country year month"
+      max_sequences: 1500
+      query: --query "(not ({country_query}) and region=='{region}')"
+      priorities:
+        type: proximity
+        focus: "focal"
+
+    # rest of world
+    global-context:
+      group_by: "region year month"
+      max_sequences: 1500
+      exclude: --exclude-where "region='{region}'"    
+      priorities:
+        type: proximity
+        focus: "focal"
+
