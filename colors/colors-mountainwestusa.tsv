@@ -1,0 +1,76 @@
+division	Maine	#666666
+division	Massachusetts	#666666
+division	Connecticut	#666666
+division	Rhode Island	#666666
+division	New Hampshire	#666666
+division	Vermont	#666666
+division	New York	#666666
+division	New Jersey	#666666
+division	Virginia	#999999
+division	Pennsylvania	#999999
+division	Washington DC	#999999
+division	Maryland	#999999
+division	Delaware	#999999
+division	Wisconsin	#888888
+division	Illinois	#888888
+division	Ohio	#888888
+division	Michigan	#888888
+division	Minnesota	#888888
+division	Iowa	#888888
+division	Indiana	#888888
+division	Louisiana	#777777
+division	Texas	#777777
+division	Mississippi	#777777
+division	Kansas	#777777
+division	Oklahoma	#777777
+division	Missouri	#777777
+division	Arkansas	#777777
+division	Alabama	#777777
+division	Tennessee	#777777
+division	West Virginia	#777777
+division	Kentucky	#777777
+division	Georgia	#777777
+division	Florida	#777777
+division	South Carolina	#777777
+division	North Carolina	#777777
+
+division	Colorado	#E41A1C
+division	Utah	#377EB8
+division	Arizona	#4DAF4A
+division	Wyoming	#984EA3
+division	New Mexico	#FF7F00
+division	Idaho	#FFFF33
+division	Montana	#A65628
+division	Nevada	#F781BF
+
+division	North Dakota	#666666
+division	South Dakota	#666666
+division	Nebraska	#666666
+division	Oregon	#555555
+division	Washington	#555555
+division	California	#555555
+division	Puerto Rico	#444444
+division	Hawaii	#444444
+division	Alaska	#444444
+
+recency	Older	#416DCE
+recency	One month ago	#59A3AA
+recency	One week ago	#84BA6F
+recency	3-7 days ago	#BBBC49
+recency	1-2 days ago	#E29D39
+recency	New	#E1502A
+
+region	Oceania	#416DCE
+region	Asia	#59A3AA
+region	Africa	#84BA6F
+region	Europe	#BBBC49
+region	North America	#E29D39
+region	South America	#E1502A
+
+Mountain_West_USA_submitting_lab	Infectious Disease Program, Broad Institute of Harvard and MIT	#e41a1c
+Mountain_West_USA_submitting_lab	Quest Diagnostics	#ffff33
+Mountain_West_USA_submitting_lab	Infectious Diseases, Quest Diagnostics	#ffff33
+Mountain_West_USA_submitting_lab	Pathogen Discovery, Respiratory Viruses Branch, Division of Viral Diseases, Centers for Disease Control and Prevention	#f781bf
+Mountain_West_USA_submitting_lab	Genomics and Discovery, Respiratory Viruses Branch, Division of Viral Diseases, Centers for Disease Control and Prevention	#f781bf
+Mountain_West_USA_submitting_lab	Respiratory Viruses Branch, Division of Viral Diseases, Centers for Disease Control and Prevention	#f781bf
+Mountain_West_USA_submitting_lab	Respiratory Viruses Branch, Centers for Disease Control and Prevention	#f781bf

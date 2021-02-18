@@ -1,0 +1,10 @@
+geoloc_mountainwestusa	region	country	division
+region	*	*	*
+Mountain West USA	North America	USA	Colorado
+Mountain West USA	North America	USA	Utah
+Mountain West USA	North America	USA	Arizona
+Mountain West USA	North America	USA	Wyoming
+Mountain West USA	North America	USA	New Mexico
+Mountain West USA	North America	USA	Idaho
+Mountain West USA	North America	USA	Montana
+Mountain West USA	North America	USA	Nevada
