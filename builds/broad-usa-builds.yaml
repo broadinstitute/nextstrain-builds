@@ -12,6 +12,11 @@ builds:
     country: USA
     division: Massachusetts
 
+  massachusetts-longitudinal:
+    subsampling_scheme: state-longitudinal
+    country: USA
+    division: Massachusetts
+
   new-england:
     subsampling_scheme: multistate
     country: USA
@@ -27,6 +32,16 @@ builds:
     country: USA
     state_query: "division=='Maine' or division=='New Hampshire' or division=='Vermont' or division=='Massachusetts' or division=='Connecticut' or division=='Rhode Island'"
     lineage_query: "pangolin_lineage=='B.1.110.3' or pangolin_lineage=='B.1.517' or pangolin_lineage=='B.1.525' or pangolin_lineage=='B.1.526' or pangolin_lineage=='B.1.1.85' or pangolin_lineage=='B.1.429' or pangolin_lineage=='B.1.1.7' or pangolin_lineage=='B.1.351' or pangolin_lineage=='P.1' or pangolin_lineage=='P.2'"
+
+  northeast:
+    subsampling_scheme: multistate
+    country: USA
+    state_query: "division=='Maine' or division=='New Hampshire' or division=='Vermont' or division=='Massachusetts' or division=='Connecticut' or division=='Rhode Island' or division=='New York' or division=='New Jersey'"
+
+  northeast-weighted:
+    subsampling_scheme: multistate-weighted
+    country: USA
+    state_query: "division=='Maine' or division=='New Hampshire' or division=='Vermont' or division=='Massachusetts' or division=='Connecticut' or division=='Rhode Island' or division=='New York' or division=='New Jersey'"
 
   northeast-lineages:
     subsampling_scheme: multistate-weighted-lineage
@@ -69,13 +84,13 @@ subsampling:
   state:
     focal:
       group_by: "year month"
-      max_sequences: 2400
+      max_sequences: 3000
       query: --query "country == '{country}' and division == '{division}'"
 
     # Samples that are genetically related to the focal samples
     national-context:
       group_by: "division year month"
-      max_sequences: 1500
+      max_sequences: 1200
       query: --query "country == '{country}' and division != '{division}'"
 
     # Contextual samples from the rest of the world
@@ -122,6 +137,35 @@ subsampling:
       group_by: "region year month"
       max_sequences: 400
       exclude: --exclude-where "country='{country}'"    
+      priorities:
+        type: proximity
+        focus: "focal"
+
+  state-longitudinal:
+    focal:
+      group_by: "year month"
+      max_sequences: 2400
+      query: --query "country == '{country}' and division == '{division}'"
+
+    focal-longitudinal:
+      group_by: "division"
+      max_sequences: 500
+      query: --query  "(country=='{country}' and ({state_query}) and ({Longitudinal_Patient != ''}))"
+
+    # Samples that are genetically related to the focal samples
+    national-context:
+      group_by: "division year month"
+      max_sequences: 1200
+      query: --query "country == '{country}' and division != '{division}'"
+      priorities:
+        type: proximity
+        focus: "focal"
+
+    # Contextual samples from the rest of the world
+    global-context:
+      group_by: "region year month"
+      max_sequences: 400
+      exclude: --exclude-where "country='{country}'"
       priorities:
         type: proximity
         focus: "focal"
