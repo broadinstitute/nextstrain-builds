@@ -79,6 +79,11 @@ builds:
     country: USA
     state_query: "division=='Colorado' or division=='Utah' or division=='Arizona' or division=='Wyoming' or division=='New Mexico' or division=='Idaho' or division=='Montana' or division=='Nevada'"
 
+  us-mountain-west-collection-weighted:
+    subsampling_scheme: multistate-collection-weighted
+    country: USA
+    state_query: "division=='Colorado' or division=='Utah' or division=='Arizona' or division=='Wyoming' or division=='New Mexico' or division=='Idaho' or division=='Montana' or division=='Nevada'"
+
 subsampling:
 
   state:
@@ -194,6 +199,34 @@ subsampling:
         type: proximity
         focus: focal
 
+  multistate-collection-weighted:
+    focal:
+      group_by: "year month"
+      max_sequences: 2500
+      query: --query "(country=='{country}' and ({state_query}))"
+
+    focal-collection:
+      group_by: "division"
+      max_sequences: 2000
+      exclude: --exclude-where "collection=''"
+
+    # Samples that are genetically related to the focal samples
+    national-context:
+      group_by: "division year month"
+      max_sequences: 1000
+      query: --query "(country=='{country}' and not ({state_query}))"
+      priorities:
+        type: proximity
+        focus: focal
+
+    # Contextual samples from the rest of the world
+    global-context:
+      group_by: "region year month"
+      max_sequences: 400
+      exclude: --exclude-where "country='{country}'"
+      priorities:
+        type: proximity
+        focus: focal
 
   multistate-weighted-lineage:
     # the focal geographic area (don't exclude the lineage here so as not to bias the proximity calcs)
