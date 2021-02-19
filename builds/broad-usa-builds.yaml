@@ -150,7 +150,7 @@ subsampling:
     focal-longitudinal:
       group_by: "division"
       max_sequences: 1000
-      query: --query  "country=='{country}' and division == '{division}' and Longitudinal_Patient != ''"
+      exclude: --exclude-where "Longitudinal_Patient=''"
 
     # Samples that are genetically related to the focal samples
     national-context:
