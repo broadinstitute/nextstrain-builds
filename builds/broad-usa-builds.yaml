@@ -153,9 +153,9 @@ subsampling:
       query: --query "country == '{country}' and division == '{division}'"
 
     focal-longitudinal:
-      group_by: "division"
+      group_by: "country"
       max_sequences: 1000
-      query: --query "Longitudinal_Patient != ''"
+      query: --query "purpose_of_sequencing == 'Longitudinal surveillance (repeat sampling)'"
 
     # Samples that are genetically related to the focal samples
     national-context:
