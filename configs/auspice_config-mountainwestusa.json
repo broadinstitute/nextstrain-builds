@@ -75,13 +75,8 @@
       "type": "categorical"
     },
     {
-      "key": "Mountain_West_USA_originating_lab",
-      "title": "MW USA Originating Lab",
-      "type": "categorical"
-    },
-     {
-      "key": "Mountain_West_USA_submitting_lab",
-      "title": "MW USA Submitting Lab",
+      "key": "collection",
+      "title": "Collection",
       "type": "categorical"
     }
   ],
@@ -114,7 +109,6 @@
     "pangolin_lineage",
     "Nextstrain_clade",
     "GISAID_clade",
-    "Mountain_West_USA_originating_lab",
-    "Mountain_West_USA_submitting_lab"
+    "collection"
   ]
 }
