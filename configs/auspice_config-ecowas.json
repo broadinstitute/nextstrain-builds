@@ -1,0 +1,137 @@
+{
+  "title": "SARS-CoV-2 Viral Genomes",
+  "maintainers": [
+    {"name": "Broad Institute Viral Genomics", "url": "https://www.broadinstitute.org/"}
+  ],
+  "colorings": [
+    {
+      "key": "location",
+      "title": "Location",
+      "type": "categorical"
+    },
+    {
+      "key": "division",
+      "title": "Admin Division",
+      "type": "categorical"
+    },
+    {
+      "key": "country",
+      "title": "Country",
+      "type": "categorical"
+    },
+    {
+      "key": "region",
+      "title": "Region",
+      "type": "categorical"
+    },
+    {
+      "key": "host",
+      "title": "Host",
+      "type": "categorical"
+    },
+    {
+      "key": "age",
+      "title": "Age",
+      "type": "continuous"
+    },
+    {
+      "key": "sex",
+      "title": "Sex",
+      "type": "categorical"
+    },
+    {
+      "key": "author",
+      "title": "Authors",
+      "type": "categorical"
+    },
+    {
+      "key": "originating_lab",
+      "title": "Originating Lab",
+      "type": "categorical"
+    },
+    {
+      "key": "submitting_lab",
+      "title": "Submitting Lab",
+      "type": "categorical"
+    },
+    {
+      "key": "recency",
+      "title": "Submission Date",
+      "type": "categorical"
+    },
+    {
+      "key": "gisaid_epi_isl",
+      "type": "categorical"
+    },
+    {
+      "key": "genbank_accession",
+      "type": "categorical"
+    },
+    {
+      "key": "country_exposure",
+      "title": "Country of exposure",
+      "type": "categorical"
+    },
+    {
+      "key": "division_exposure",
+      "title": "Division of exposure",
+      "type": "categorical"
+    },
+    {
+      "key": "region_exposure",
+      "title": "Region of exposure",
+      "type": "categorical"
+    },
+    {
+      "key": "pangolin_lineage",
+      "title": "Pangolin lineage",
+      "type": "categorical"
+    },
+    {
+      "key": "Nextstrain_clade",
+      "title": "Nextstrain Clade",
+      "type": "categorical"
+    },
+    {
+      "key": "GISAID_clade",
+      "title": "GISAID Clade",
+      "type": "categorical"
+    },
+    {
+      "key": "purpose_of_sequencing",
+      "title": "Purpose of Sequencing",
+      "type": "categorical"
+    }
+  ],
+  "display_defaults": {
+    "color_by": "country",
+    "distance_measure": "num_date",
+    "geo_resolution": "division",
+    "map_triplicate": true,
+    "branch_label": "clade"
+  },
+  "geo_resolutions": [
+    "region",
+    "country",
+    "division",
+    "location"
+  ],
+  "panels": [
+    "tree",
+    "map",
+    "entropy",
+    "frequencies"
+  ],
+  "filters": [
+    "recency",
+    "region",
+    "country",
+    "division",
+    "purpose_of_sequencing",
+    "pangolin_lineage",
+    "Nextstrain_clade",
+    "GISAID_clade",
+    "originating_lab",
+    "submitting_lab"
+  ]
+}
