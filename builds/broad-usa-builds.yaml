@@ -74,13 +74,18 @@ builds:
     country: USA
     state_query: "division=='Colorado' or division=='Utah'"
 
+  colorado-utah-grouping-weighted:
+    subsampling_scheme: multistate-grouping-weighted
+    country: USA
+    state_query: "division=='Colorado' or division=='Utah'"
+
   us-mountain-west-weighted:
     subsampling_scheme: multistate-weighted
     country: USA
     state_query: "division=='Colorado' or division=='Utah' or division=='Arizona' or division=='Wyoming' or division=='New Mexico' or division=='Idaho' or division=='Montana' or division=='Nevada'"
 
-  us-mountain-west-collection-weighted:
-    subsampling_scheme: multistate-collection-weighted
+  us-mountain-west-grouping-weighted:
+    subsampling_scheme: multistate-grouping-weighted
     country: USA
     state_query: "division=='Colorado' or division=='Utah' or division=='Arizona' or division=='Wyoming' or division=='New Mexico' or division=='Idaho' or division=='Montana' or division=='Nevada'"
 
@@ -199,25 +204,25 @@ subsampling:
         type: proximity
         focus: focal
 
-  multistate-collection-weighted:
+  multistate-grouping-weighted:
     focal:
       group_by: "year month"
       max_sequences: 2500
       query: --query "(country=='{country}' and ({state_query}))"
 
-    focal-collection:
+    focal-grouping:
       group_by: "division"
       max_sequences: 2000
-      exclude: --exclude-where "collection=''"
+      query: --query "( grouping != '' )"
 
     # Samples that are genetically related to the focal samples
     national-context:
       group_by: "division year month"
       max_sequences: 1000
-      query: --query "(country=='{country}' and not ({state_query}))"
+      query: --query "(country=='{country}' and not ({state_query}) and grouping == '' )"
       priorities:
         type: proximity
-        focus: focal
+        focus: focal-grouping
 
     # Contextual samples from the rest of the world
     global-context:
@@ -226,7 +231,7 @@ subsampling:
       exclude: --exclude-where "country='{country}'"
       priorities:
         type: proximity
-        focus: focal
+        focus: focal-grouping
 
   multistate-weighted-lineage:
     # the focal geographic area (don't exclude the lineage here so as not to bias the proximity calcs)

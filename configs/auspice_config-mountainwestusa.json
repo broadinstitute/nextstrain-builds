@@ -75,8 +75,13 @@
       "type": "categorical"
     },
     {
-      "key": "collection",
-      "title": "Collection",
+      "key": "grouping",
+      "title": "Grouping",
+      "type": "categorical"
+    },
+    {
+      "key": "cluster",
+      "title": "Cluster",
       "type": "categorical"
     }
   ],
@@ -109,6 +114,7 @@
     "pangolin_lineage",
     "Nextstrain_clade",
     "GISAID_clade",
-    "collection"
+    "grouping",
+    "cluster"
   ]
 }
