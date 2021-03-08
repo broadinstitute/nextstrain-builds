@@ -100,7 +100,7 @@ builds:
     state_query: "division=='Colorado' or division=='Utah' or division=='Arizona' or division=='Wyoming' or division=='New Mexico' or division=='Idaho' or division=='Montana' or division=='Nevada'"
 
   aerospace-grouping-weighted:
-    subsampling_scheme: aerospace-grouping-weighted
+    subsampling_scheme: multistate-grouping-weighted
     country: USA
     state_query: "division=='Florida' or division=='Texas' or division=='California' or division=='Washington' or division=='Washington DC'"
 
