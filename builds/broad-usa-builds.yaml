@@ -226,15 +226,15 @@ subsampling:
       query: --query "(country=='{country}' and ({state_query}))"
 
     focal-grouping:
-      group_by: "division"
+      group_by: "grouping"
       max_sequences: 2000
-      query: --query "( grouping != '' )"
+      query: --query "( grouping != '?' )"
 
     # Samples that are genetically related to the focal samples
     national-context:
       group_by: "division year month"
       max_sequences: 1000
-      query: --query "(country=='{country}' and not ({state_query}) and grouping == '' )"
+      query: --query "(country=='{country}' and not ({state_query}) and grouping == '?' )"
       priorities:
         type: proximity
         focus: focal-grouping
