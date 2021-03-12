@@ -48,7 +48,7 @@ builds:
     subsampling_scheme: multicountry-weighted-lineage
     region: Africa
     country_query: "country=='Benin' or country=='Burkina Faso' or country=='Cape Verde' or country=='Gambia' or country=='Ghana' or country=='Guinea' or country=='Guinea-Bissau' or country=='Liberia' or country=='Mali' or country=='Niger' or country=='Nigeria' or country=='Senegal' or country=='Sierra Leone' or country=='Togo'"
-    lineage_query: "pangolin_lineage=='B.1.525'"
+    lineage_query: "pango_lineage=='B.1.525'"
     # warning: the above list of ecowas countries is missing Côte d'Ivoire because I can't figure out how to add it to the above expression
 
 

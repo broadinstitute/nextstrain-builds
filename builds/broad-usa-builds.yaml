@@ -41,7 +41,7 @@ builds:
     subsampling_scheme: multistate-weighted-lineage
     country: USA
     state_query: "division=='Maine' or division=='New Hampshire' or division=='Vermont' or division=='Massachusetts' or division=='Connecticut' or division=='Rhode Island'"
-    lineage_query: "pangolin_lineage=='B.1.110.3' or pangolin_lineage=='B.1.517' or pangolin_lineage=='B.1.525' or pangolin_lineage=='B.1.526' or pangolin_lineage=='B.1.1.85' or pangolin_lineage=='B.1.429' or pangolin_lineage=='B.1.1.7' or pangolin_lineage=='B.1.351' or pangolin_lineage=='P.1' or pangolin_lineage=='P.2'"
+    lineage_query: "pango_lineage=='B.1.110.3' or pango_lineage=='B.1.517' or pango_lineage=='B.1.525' or pango_lineage=='B.1.526' or pango_lineage=='B.1.1.85' or pango_lineage=='B.1.429' or pango_lineage=='B.1.1.7' or pango_lineage=='B.1.351' or pango_lineage=='P.1' or pango_lineage=='P.2'"
 
   northeast:
     subsampling_scheme: multistate
@@ -57,7 +57,7 @@ builds:
     subsampling_scheme: multistate-weighted-lineage
     country: USA
     state_query: "division=='Maine' or division=='New Hampshire' or division=='Vermont' or division=='Massachusetts' or division=='Connecticut' or division=='Rhode Island' or division=='New York' or division=='New Jersey'"
-    lineage_query: "pangolin_lineage=='B.1.110.3' or pangolin_lineage=='B.1.517' or pangolin_lineage=='B.1.525' or pangolin_lineage=='B.1.526' or pangolin_lineage=='B.1.1.85' or pangolin_lineage=='B.1.429' or pangolin_lineage=='B.1.1.7' or pangolin_lineage=='B.1.351' or pangolin_lineage=='P.1' or pangolin_lineage=='P.2'"
+    lineage_query: "pango_lineage=='B.1.110.3' or pango_lineage=='B.1.517' or pango_lineage=='B.1.525' or pango_lineage=='B.1.526' or pango_lineage=='B.1.1.85' or pango_lineage=='B.1.429' or pango_lineage=='B.1.1.7' or pango_lineage=='B.1.351' or pango_lineage=='P.1' or pango_lineage=='P.2'"
 
   nyc:
     subsampling_scheme: multistate
@@ -272,7 +272,7 @@ subsampling:
 
     # Some samples from the rest of the country with genetic lineages of interest
     national-lineage:
-      group_by: "division pangolin_lineage"
+      group_by: "division pango_lineage"
       max_sequences: 500
       query: --query  "(country=='{country}' and not ({state_query}) and ({lineage_query}))"
 
