@@ -41,7 +41,7 @@ builds:
     subsampling_scheme: multistate-weighted-lineage
     country: USA
     state_query: "division=='Maine' or division=='New Hampshire' or division=='Vermont' or division=='Massachusetts' or division=='Connecticut' or division=='Rhode Island'"
-    lineage_query: "pango_lineage=='B.1.110.3' or pango_lineage=='B.1.517' or pango_lineage=='B.1.525' or pango_lineage=='B.1.526' or pango_lineage=='B.1.1.85' or pango_lineage=='B.1.429' or pango_lineage=='B.1.1.7' or pango_lineage=='B.1.351' or pango_lineage=='P.1' or pango_lineage=='P.2'"
+    lineage_query: "pango_lineage=='B.1.110.3' or pango_lineage=='B.1.517' or pango_lineage=='B.1.525' or pango_lineage=='B.1.526' or pango_lineage=='B.1.526.1' or pango_lineage=='B.1.526.2' or pango_lineage=='B.1.1.85' or pango_lineage=='B.1.427' or pango_lineage=='B.1.429' or pango_lineage=='B.1.1.7' or pango_lineage=='B.1.351' or pango_lineage=='B.1.351.1' or pango_lineage=='B.1.351.2' or pango_lineage=='P.1' or pango_lineage=='P.2'"
 
   northeast:
     subsampling_scheme: multistate
@@ -57,7 +57,7 @@ builds:
     subsampling_scheme: multistate-weighted-lineage
     country: USA
     state_query: "division=='Maine' or division=='New Hampshire' or division=='Vermont' or division=='Massachusetts' or division=='Connecticut' or division=='Rhode Island' or division=='New York' or division=='New Jersey'"
-    lineage_query: "pango_lineage=='B.1.110.3' or pango_lineage=='B.1.517' or pango_lineage=='B.1.525' or pango_lineage=='B.1.526' or pango_lineage=='B.1.1.85' or pango_lineage=='B.1.429' or pango_lineage=='B.1.1.7' or pango_lineage=='B.1.351' or pango_lineage=='P.1' or pango_lineage=='P.2'"
+    lineage_query: "pango_lineage=='B.1.110.3' or pango_lineage=='B.1.517' or pango_lineage=='B.1.525' or pango_lineage=='B.1.526' or pango_lineage=='B.1.526.1' or pango_lineage=='B.1.526.2' or pango_lineage=='B.1.1.85' or pango_lineage=='B.1.427' or pango_lineage=='B.1.429' or pango_lineage=='B.1.1.7' or pango_lineage=='B.1.351' or pango_lineage=='B.1.351.1' or pango_lineage=='B.1.351.2' or pango_lineage=='P.1' or pango_lineage=='P.2'"
 
   nyc:
     subsampling_scheme: multistate
