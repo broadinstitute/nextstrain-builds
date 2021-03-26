@@ -83,7 +83,7 @@
       "type": "categorical"
     },
     {
-      "key": "pangolin_lineage",
+      "key": "pango_lineage",
       "title": "Pangolin lineage",
       "type": "categorical"
     },
@@ -148,7 +148,7 @@
     "country",
     "division",
     "purpose_of_sequencing",
-    "pangolin_lineage",
+    "pango_lineage",
     "Nextstrain_clade",
     "GISAID_clade",
     "originating_lab",
