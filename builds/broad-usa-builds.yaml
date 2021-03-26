@@ -43,6 +43,12 @@ builds:
     state_query: "division=='Maine' or division=='New Hampshire' or division=='Vermont' or division=='Massachusetts' or division=='Connecticut' or division=='Rhode Island'"
     lineage_query: "pango_lineage=='B.1.110.3' or pango_lineage=='B.1.517' or pango_lineage=='B.1.525' or pango_lineage=='B.1.526' or pango_lineage=='B.1.526.1' or pango_lineage=='B.1.526.2' or pango_lineage=='B.1.1.85' or pango_lineage=='B.1.427' or pango_lineage=='B.1.429' or pango_lineage=='B.1.1.7' or pango_lineage=='B.1.351' or pango_lineage=='B.1.351.1' or pango_lineage=='B.1.351.2' or pango_lineage=='P.1' or pango_lineage=='P.2'"
 
+  new-england-p1:
+    subsampling_scheme: multistate-global-lineage
+    country: USA
+    state_query: "division=='Maine' or division=='New Hampshire' or division=='Vermont' or division=='Massachusetts' or division=='Connecticut' or division=='Rhode Island'"
+    lineage_query: "pango_lineage=='P.1'"
+
   northeast:
     subsampling_scheme: multistate
     country: USA
@@ -284,3 +290,40 @@ subsampling:
       priorities:
         type: proximity
         focus: focal
+
+  multistate-global-lineage:
+    # the focal geographic area (don't exclude the lineage here so as not to bias the proximity calcs)
+    focal:
+      group_by: "division year month"
+      max_sequences: 1500
+      query: --query "(country=='{country}' and ({state_query}))"
+
+    # Samples from the rest of the country that are genetically related to the focal samples
+    national-context:
+      group_by: "division year month"
+      max_sequences: 1000
+      query: --query "(country=='{country}' and not ({state_query}))"
+      priorities:
+        type: proximity
+        focus: focal
+
+    # Some samples from the rest of the country with genetic lineages of interest
+    national-lineage:
+      group_by: "division pango_lineage"
+      max_sequences: 500
+      query: --query  "(country=='{country}' and not ({state_query}) and ({lineage_query}))"
+
+    # Contextual samples from the rest of the world
+    global-context:
+      group_by: "region year month"
+      max_sequences: 400
+      exclude: --exclude-where "country='{country}'"
+      priorities:
+        type: proximity
+        focus: focal
+
+    # genetic lineages of interest from the rest of the world
+    global-lineage:
+      group_by: "pango_lineage"
+      max_sequences: 1500
+      query: --query  "(country!='{country}' and ({lineage_query}))"
