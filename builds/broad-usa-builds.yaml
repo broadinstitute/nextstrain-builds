@@ -303,27 +303,15 @@ subsampling:
       group_by: "division year month"
       max_sequences: 1000
       query: --query "(country=='{country}' and not ({state_query}))"
-      priorities:
-        type: proximity
-        focus: focal
-
-    # Some samples from the rest of the country with genetic lineages of interest
-    national-lineage:
-      group_by: "division pango_lineage"
-      max_sequences: 500
-      query: --query  "(country=='{country}' and not ({state_query}) and ({lineage_query}))"
 
     # Contextual samples from the rest of the world
     global-context:
       group_by: "region year month"
       max_sequences: 400
       exclude: --exclude-where "country='{country}'"
-      priorities:
-        type: proximity
-        focus: focal
 
-    # genetic lineages of interest from the rest of the world
-    global-lineage:
+    # genetic lineages of interest
+    lineage:
       group_by: "pango_lineage"
-      max_sequences: 1500
-      query: --query  "(country!='{country}' and ({lineage_query}))"
+      max_sequences: 2000
+      query: --query  "({lineage_query})"
