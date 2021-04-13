@@ -1,0 +1,54 @@
+geoloc_us_state	region	country	division
+region	*	*	*
+Maine	North America	USA	Maine
+Massachusetts	North America	USA	Massachusetts
+Connecticut	North America	USA	Connecticut
+Rhode Island	North America	USA	Rhode Island
+New Hampshire	North America	USA	New Hampshire
+Vermont	North America	USA	Vermont
+New York	North America	USA	New York
+New Jersey	North America	USA	New Jersey
+Virginia	North America	USA	Virginia
+Pennsylvania	North America	USA	Pennsylvania
+Washington DC	North America	USA	Washington DC
+Maryland	North America	USA	Maryland
+Delaware	North America	USA	Delaware
+Wisconsin	North America	USA	Wisconsin
+Illinois	North America	USA	Illinois
+Ohio	North America	USA	Ohio
+Michigan	North America	USA	Michigan
+Minnesota	North America	USA	Minnesota
+Iowa	North America	USA	Iowa
+Indiana	North America	USA	Indiana
+Louisiana	North America	USA	Louisiana
+Texas	North America	USA	Texas
+Mississippi	North America	USA	Mississippi
+Kansas	North America	USA	Kansas
+Oklahoma	North America	USA	Oklahoma
+Missouri	North America	USA	Missouri
+Arkansas	North America	USA	Arkansas
+Alabama	North America	USA	Alabama
+Tennessee	North America	USA	Tennessee
+West Virginia	North America	USA	West Virginia
+Kentucky	North America	USA	Kentucky
+Georgia	North America	USA	Georgia
+Florida	North America	USA	Florida
+South Carolina	North America	USA	South Carolina
+North Carolina	North America	USA	North Carolina
+New Mexico	North America	USA	New Mexico
+Nevada	North America	USA	Nevada
+Idaho	North America	USA	Idaho
+Utah	North America	USA	Utah
+Arizona	North America	USA	Arizona
+Montana	North America	USA	Montana
+Wyoming	North America	USA	Wyoming
+Colorado	North America	USA	Colorado
+North Dakota	North America	USA	North Dakota
+South Dakota	North America	USA	South Dakota
+Nebraska	North America	USA	Nebraska
+Oregon	North America	USA	Oregon
+Washington	North America	USA	Washington
+California	North America	USA	California
+Puerto Rico	North America	USA	Puerto Rico
+Hawaii	North America	USA	Hawaii
+Alaska	North America	USA	Alaska
