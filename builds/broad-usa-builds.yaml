@@ -228,13 +228,13 @@ subsampling:
     focal-grouping:
       group_by: "grouping"
       max_sequences: 2000
-      query: --query "( grouping != '?' and grouping != '' and grouping != 'UNKNOWN' )"
+      query: --query "( grouping != '?' and grouping != '' and grouping != 'UNKNOWN' ) or grouping.str.len() > 0"
 
     # Samples that are genetically related to the focal samples
     national-context:
       group_by: "division year month"
       max_sequences: 1000
-      query: --query "(country=='{country}' and not ({state_query}) and (grouping == '?' or grouping == '' or grouping == 'unknown') )"
+      query: --query "(country=='{country}' and not ({state_query}) and (grouping == '?' or grouping == '' or grouping == 'UNKNOWN' or grouping.str.len() == 0) )"
       priorities:
         type: proximity
         focus: focal-grouping
