@@ -110,6 +110,18 @@ builds:
     country: USA
     state_query: "division=='Florida' or division=='Texas' or division=='California' or division=='Washington' or division=='Washington DC'"
 
+  new-england-delta:
+    subsampling_scheme: multistate-global-lineage
+    country: USA
+    state_query: "division=='Maine' or division=='New Hampshire' or division=='Vermont' or division=='Massachusetts' or division=='Connecticut' or division=='Rhode Island'"
+    lineage_query: "pango_lineage=='B.1.617.2' or pango_lineage=='AY.1' or pango_lineage=='AY.2' or pango_lineage=='AY.3'"
+
+  new-england-delta-multistate-weighted-lineage:
+    subsampling_scheme: multistate-weighted-lineage
+    country: USA
+    state_query: "division=='Maine' or division=='New Hampshire' or division=='Vermont' or division=='Massachusetts' or division=='Connecticut' or division=='Rhode Island'"
+    lineage_query: "pango_lineage=='B.1.617.2' or pango_lineage=='AY.1' or pango_lineage=='AY.2' or pango_lineage=='AY.3'"
+
 subsampling:
 
   state:
