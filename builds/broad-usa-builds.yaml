@@ -351,7 +351,7 @@ subsampling:
     national-context-proximity:
       group_by: "division"
       max_sequences: 600
-      query: --query "(country=='{country}')"
+      query: --query "(country=='{country}' and not ({cluster_query}))"
       priorities:
         type: proximity
         focus: focal
@@ -367,7 +367,7 @@ subsampling:
     local-context:
       group_by: "division year month"
       max_sequences: 400
-      query: --query "(country=='{country}' and ({state_query}))"
+      query: --query "(country=='{country}' and ({state_query}) and not ({cluster_query}))"
     national-context:
       group_by: "division year month"
       max_sequences: 400
