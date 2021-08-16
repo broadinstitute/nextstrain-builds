@@ -128,10 +128,10 @@ builds:
     cluster_query: "(purpose_of_sequencing=='Cluster/Outbreak investigation' or purpose_of_sequencing=='Targeted surveillance (non-random sampling)' or purpose_of_sequencing=='SNF B') and division=='Massachusetts' and date >= '2021-07-01' and date < '2021-09-01'"
     state_query: "division=='Massachusetts'"
 
-  ma-delta-cluster-broad:
+  ma-delta-cluster-unique:
     subsampling_scheme: cluster-of-interest
     country: USA
-    cluster_query: "(originating_lab=='Broad Institute Clinical Research Sequencing Platform' or purpose_of_sequencing=='SNF B') and division=='Massachusetts' and date >= '2021-07-01' and date < '2021-09-01'"
+    cluster_query: "longest_submittable_genome_from_patient=='Yes' and (purpose_of_sequencing=='Cluster/Outbreak investigation' or purpose_of_sequencing=='Targeted surveillance (non-random sampling)' or purpose_of_sequencing=='SNF B') and division=='Massachusetts' and date >= '2021-07-01' and date < '2021-09-01'"
     state_query: "division=='Massachusetts'"
 
 subsampling:
@@ -344,20 +344,20 @@ subsampling:
     # the focal group is all of our samples of interest defined by this build
     focal:
       group_by: "year"
-      max_sequences: 4000
+      max_sequences: 2000
       query: --query "({cluster_query})"
 
     # Samples from the rest of the world that are genetically related to the focal samples
     national-context-proximity:
       group_by: "division"
-      max_sequences: 600
+      max_sequences: 1500
       query: --query "(country=='{country}' and not ({cluster_query}))"
       priorities:
         type: proximity
         focus: focal
     global-context-proximity:
       group_by: "region"
-      max_sequences: 400
+      max_sequences: 500
       query: --query "(country!='{country}')"
       priorities:
         type: proximity
@@ -366,13 +366,13 @@ subsampling:
     # Random contextual samples from the rest of the world
     local-context:
       group_by: "division year month"
-      max_sequences: 400
+      max_sequences: 300
       query: --query "(country=='{country}' and ({state_query}) and not ({cluster_query}))"
     national-context:
       group_by: "division year month"
-      max_sequences: 400
+      max_sequences: 300
       query: --query "(country=='{country}' and not ({state_query}))"
     global-context:
       group_by: "region year month"
-      max_sequences: 400
+      max_sequences: 300
       query: --query "(country!='{country}')"
