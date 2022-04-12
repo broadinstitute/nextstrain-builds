@@ -134,6 +134,11 @@ builds:
     cluster_query: "longest_submittable_genome_from_patient=='Yes' and (purpose_of_sequencing=='Cluster/Outbreak investigation' or purpose_of_sequencing=='Targeted surveillance (non-random sampling)' or purpose_of_sequencing=='SNF B') and division=='Massachusetts' and date >= '2021-07-01' and date < '2021-09-01'"
     state_query: "division=='Massachusetts'"
 
+  us-mountain-west-study-grouping-weighted:
+    subsampling_scheme: multistate-grouping-weighted
+    country: USA
+    state_query: "division=='Colorado' or division=='Utah' or division=='Arizona' or division=='Wyoming' or division=='New Mexico' or division=='Idaho' or division=='Montana' or division=='Nevada' or originating_lab=='CDPHE' or originating_lab=='Colorado Department of Public Health and Environment'"
+
 subsampling:
 
   state:
