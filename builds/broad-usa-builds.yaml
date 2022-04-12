@@ -257,7 +257,7 @@ subsampling:
   multistate-grouping-weighted:
     focal:
       group_by: "year month"
-      max_sequences: 2500
+      max_sequences: 2000
       query: --query "(country=='{country}' and ({state_query}))"
 
     focal-grouping:
@@ -274,10 +274,19 @@ subsampling:
         type: proximity
         focus: focal-grouping
 
+    # Samples that are genetically related to the focal samples
+    state-context:
+      group_by: "year month"
+      max_sequences: 1000
+      query: --query "(({state_query}) and not country=='{country}' and (grouping == '?' or grouping == '' or grouping == 'UNKNOWN' or grouping.str.len() == 0) )"
+      priorities:
+        type: proximity
+        focus: focal-grouping
+
     # Contextual samples from the rest of the world
     global-context:
       group_by: "region year month"
-      max_sequences: 400
+      max_sequences: 500
       exclude: --exclude-where "country='{country}'"
       priorities:
         type: proximity
