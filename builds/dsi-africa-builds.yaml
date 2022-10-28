@@ -1,0 +1,110 @@
+# Define locations for which builds should be created.
+# For each build we specify a subsampling scheme via an explicit key.
+builds:
+
+  senegal:
+    subsampling_scheme: country
+    country: Senegal
+    region: Africa
+
+  drcongo:
+    subsampling_scheme: country-custom-weighted
+    country: "Democratic Republic of Congo"
+    region: Africa
+
+  ecowas:
+    subsampling_scheme: multicountry
+    region: Africa
+    country_query: "country=='Benin' or country=='Burkina Faso' or country=='Cape Verde' or country=='Gambia' or country=='Ghana' or country=='Guinea' or country=='Guinea-Bissau' or country=='Liberia' or country=='Mali' or country=='Niger' or country=='Nigeria' or country=='Senegal' or country=='Sierra Leone' or country=='Togo'"
+    # warning: the above list of ecowas countries is missing Côte d'Ivoire because I can't figure out how to add it to the above expression
+
+  southern-africa:
+    subsampling_scheme: multicountry
+    region: Africa
+    country_query: "country=='Angola' or country=='Botswana' or country=='Lesotho' or country=='Mozambique' or country=='Namibia' or country=='South Africa' or country=='Eswatini' or country=='Zambia' or country=='Zimbabwe' or country=='Malawi' or country=='Madagascar' or country=='Mauritius'"
+
+  eac:
+    subsampling_scheme: multicountry
+    region: Africa
+    country_query: "country=='Burundi' or country=='Democratic Republic of Congo' or country=='Kenya' or country=='Rwanda' or country=='South Sudan' or country=='Tanzania' or country=='Uganda'"
+
+
+
+subsampling:
+
+
+  multicountry:
+    focal:
+      group_by: "country"
+      max_sequences: 1500
+      query: --query "({country_query})"
+
+    # same continent
+    regional-context:
+      group_by: "country year month"
+      max_sequences: 1500
+      query: --query "(not ({country_query}) and region=='{region}')"
+
+    # rest of world
+    global-context:
+      group_by: "region year month"
+      max_sequences: 1500
+      exclude: --exclude-where "region='{region}'"    
+
+
+  multicountry-weighted:
+    focal:
+      group_by: "country"
+      max_sequences: 1500
+      query: --query "({country_query})"
+
+    # same continent
+    regional-context:
+      group_by: "country year month"
+      max_sequences: 1500
+      query: --query "(not ({country_query}) and region=='{region}')"
+      priorities:
+        type: proximity
+        focus: "focal"
+
+    # rest of world
+    global-context:
+      group_by: "region year month"
+      max_sequences: 1500
+      exclude: --exclude-where "region='{region}'"    
+      priorities:
+        type: proximity
+        focus: "focal"
+
+
+  multicountry-weighted-lineage:
+    # the focal geographic area (don't exclude the lineage here so as not to bias the proximity calcs)
+    focal:
+      group_by: "country"
+      max_sequences: 1500
+      query: --query "({country_query})"
+
+    # genetic lineages of interest everywhere
+    focal-lineage:
+      group_by: "region"
+      max_sequences: 2000
+      query: --query "({lineage_query})"
+
+    # same continent
+    regional-context:
+      group_by: "country year month"
+      max_sequences: 1500
+      query: --query "(not ({country_query}) and region=='{region}')"
+      priorities:
+        type: proximity
+        focus: "focal"
+
+    # rest of world
+    global-context:
+      group_by: "region year month"
+      max_sequences: 600
+      exclude: --exclude-where "region='{region}'"
+      priorities:
+        type: proximity
+        focus: "focal"
+
