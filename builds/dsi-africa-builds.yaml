@@ -2,15 +2,10 @@
 # For each build we specify a subsampling scheme via an explicit key.
 builds:
 
-  senegal:
-    subsampling_scheme: country
-    country: Senegal
+  africa:
+    subsampling_scheme: region
     region: Africa
 
-  drcongo:
-    subsampling_scheme: country-custom-weighted
-    country: "Democratic Republic of Congo"
-    region: Africa
 
   ecowas:
     subsampling_scheme: multicountry
@@ -28,6 +23,26 @@ builds:
     region: Africa
     country_query: "country=='Burundi' or country=='Democratic Republic of Congo' or country=='Kenya' or country=='Rwanda' or country=='South Sudan' or country=='Tanzania' or country=='Uganda'"
 
+
+  kenya:
+    subsampling_scheme: country
+    country: Kenya
+    region: Africa
+
+  south-africa:
+    subsampling_scheme: country
+    country: "South Africa"
+    region: Africa
+
+  egypt:
+    subsampling_scheme: country
+    country: Egypt
+    region: Africa
+
+  seychelles:
+    subsampling_scheme: country
+    country: Saychelles
+    region: Africa
 
 
 subsampling:
